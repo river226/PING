@@ -10,10 +10,11 @@ import javax.swing.JPanel;
 public class PingRepoPanel extends JPanel {
 	
 	public PingRepoPanel() {
+		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		buildPanel();
 	}
 	
-	public void buildPanel() {
+	private void buildPanel() {
 		Container account = createContainer("Account", Color.black);
 		Container repo = createContainer("Repos", Color.red);
 		Container wiki = createContainer("Wiki", Color.lightGray);

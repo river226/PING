@@ -26,8 +26,8 @@ public class PingMainFrame extends JFrame {
 	JPanel base, menu, wiki;
 	PingButton winex, winmax, winmin;
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	int w = 900;
-	int h = 600;
+	int w = (int)(dim.width * .5 + 100);
+	int h = (int)(dim.height * .5 + 100);
 	int x = (dim.width-w)/2;
 	int y = (dim.height-h)/2;
 	boolean drag = false;
@@ -96,31 +96,34 @@ public class PingMainFrame extends JFrame {
 		JPanel winOpArea = new JPanel();
 		BoxLayout layout = new BoxLayout(winOpArea, BoxLayout.X_AXIS);
 		winOpArea.setLayout(layout);
+		Rectangle r = new Rectangle();
+		r.setSize(40, 40); // Set the button Size
 		PingButton exitButton = null;
 		PingButton maximizeButton = null;
 		PingButton minimizeButton = null;
-		PingButton avatar = null;
-		String[] icons = {"src/main/resources/icons/exit.png", "src/main/resources/icons/min.png", "src/main/resources/icons/max.png", "src/main/resources/icons/restore.png"};
+		//PingButton avatar = null;
+		final String[] icons = {"src/main/resources/icons/exit.png", "src/main/resources/icons/min.png", "src/main/resources/icons/max.png", "src/main/resources/icons/restore.png"};
 			exitButton = new PingWinButton(icons[0], icons[0], "Exit", new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					throw new RuntimeException();
+					if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Do you wish to close PING?", "Close Window", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(icons[0])))
+						throw new RuntimeException("windows close");
 				}
-			});
+			}, r);
 
-			maximizeButton = new PingWinButton(icons[1], icons[2], "Maximize", new ActionListener() {
+			maximizeButton = new PingWinButton(icons[2], icons[3], "Maximize", new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setSize(dim.width, dim.height);
 				}
-			});
+			}, r);
 
-			minimizeButton = new PingWinButton(icons[3], icons[3], "Minimize", new ActionListener() {
+			minimizeButton = new PingWinButton(icons[1], icons[1], "Minimize", new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setState(JFrame.ICONIFIED);
 				}
-			});
+			}, r);
 
 
 //			avatar = new JButton(new ImageIcon(GitInstance.getInstance().getAvatar()));
