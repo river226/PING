@@ -22,6 +22,7 @@ public class Ping {
 			
 		public void run() {
 			createAndShowGUI();
+			
 //				try {
 //					createAndShowGUI();
 //				}catch (RuntimeException e) {
