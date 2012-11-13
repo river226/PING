@@ -107,7 +107,8 @@ public class PingMainFrame extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Do you wish to close PING?", "Close Window", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(icons[0])))
-						throw new RuntimeException("windows close");
+						System.exit(0);
+						//throw new RuntimeException("windows close");
 				}
 			}, r);
 

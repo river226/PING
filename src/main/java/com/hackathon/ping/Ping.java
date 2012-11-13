@@ -18,13 +18,15 @@ public class Ping {
 	public static void main(String[] args) {
 
 		Runnable runCreateAndShowGUI = new Runnable() {
-			public void run() {
-				try {
-					createAndShowGUI();
-				}catch (RuntimeException e) {
-//					e.printStackTrace();
-					System.exit(0);
-				}
+		
+			
+		public void run() {
+			createAndShowGUI();
+//				try {
+//					createAndShowGUI();
+//				}catch (RuntimeException e) {
+//					System.exit(0);
+//				}
 			}
 		};
 		SwingUtilities.invokeLater(runCreateAndShowGUI);
