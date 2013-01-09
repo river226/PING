@@ -23,12 +23,19 @@ public class PingRepoPanel extends JPanel { // Uses Group Layout
 
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
-		
+
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 				.addComponent(account)
 				.addComponent(repo)
 				.addComponent(wiki)
+				);
+		layout.setVerticalGroup(
+				layout.createSequentialGroup()
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(account)
+						.addComponent(repo)
+						.addComponent(wiki))
 				);
 	}
 
