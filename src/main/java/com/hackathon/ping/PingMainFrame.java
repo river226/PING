@@ -41,7 +41,7 @@ public class PingMainFrame extends JFrame {
 		initComponents();
 	}
 
-	private void initComponents() throws RuntimeException { // TODO: switch to borderlayout
+	private void initComponents() throws RuntimeException {
 		base = new JPanel();
 		menu = new JPanel();
 		base.setBackground(Color.WHITE);
