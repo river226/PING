@@ -41,7 +41,7 @@ public class PingMainFrame extends JFrame {
 		initComponents();
 	}
 
-	private void initComponents() throws RuntimeException { // Box
+	private void initComponents() throws RuntimeException { // TODO: switch to borderlayout
 		base = new JPanel();
 		menu = new JPanel();
 		base.setBackground(Color.WHITE);
@@ -52,12 +52,12 @@ public class PingMainFrame extends JFrame {
 		setLocation(x, y);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-		BoxLayout winLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+		BorderLayout winLayout = new BorderLayout();
 		Container contentPane = this.getContentPane();
 		
 		contentPane.setLayout(winLayout);
-		contentPane.add(buildWindowFrame());
-		contentPane.add(new PingRepoPanel()); // group layout
+		contentPane.add(buildWindowFrame(), BorderLayout.PAGE_START);
+		contentPane.add(new PingRepoPanel(), BorderLayout.PAGE_END); // group layout
 
 		addWindowDrag();
 	}
@@ -90,11 +90,21 @@ public class PingMainFrame extends JFrame {
 	}
 
 	//TODO: Fix ugly hard code
-	private Container buildWindowFrame() throws RuntimeException { // Grid Layout
-		return buildWinOpPanel(); // build entire window top panel. 
+	private Container buildWindowFrame() throws RuntimeException { // May need to switch to grid layout
+		JPanel top = new JPanel();
+		BorderLayout layout = new BorderLayout();
+		top.setLayout(layout);
+		top.add(buildWinMenu(), BorderLayout.LINE_START);
+		top.add(buildWinOpPanel(), BorderLayout.LINE_END);
+		return top; // build entire window top panel. 
 	}
 
-	private Container buildWinOpPanel() { // Box Layout
+	private Component buildWinMenu() { // No layout needed
+		JMenu men = new JMenu(); // TODO
+		return men;
+	}
+
+	private Container buildWinOpPanel() { 
 		JPanel winOpArea = new JPanel();
 		winOpArea.setSize(30, 10);
 		BoxLayout layout = new BoxLayout(winOpArea, BoxLayout.X_AXIS);
@@ -104,7 +114,6 @@ public class PingMainFrame extends JFrame {
 		PingButton exitButton = null;
 		PingButton maximizeButton = null;
 		PingButton minimizeButton = null;
-		//PingButton avatar = null;
 		final String[] icons = {"src/main/resources/icons/exit.png", "src/main/resources/icons/min.png", "src/main/resources/icons/max.png", "src/main/resources/icons/restore.png"};
 			exitButton = new PingWinButton(icons[0], icons[0], "Exit", new ActionListener() {
 				@Override
@@ -129,17 +138,11 @@ public class PingMainFrame extends JFrame {
 				}
 			}, rect);
 
-
-//			avatar = new JButton(new ImageIcon(GitInstance.getInstance().getAvatar()));
-//			avatar.setEnabled(false);
-//			winOpArea.add(avatar, Component.LEFT_ALIGNMENT);
-
 			winOpArea.add(minimizeButton, Component.LEFT_ALIGNMENT);
 			winOpArea.add(maximizeButton, Component.RIGHT_ALIGNMENT);
 			winOpArea.add(exitButton, Component.CENTER_ALIGNMENT);
 
 			winOpArea.setBackground(Color.white);
-			// Add component to jframe. 
 		return winOpArea;
 	}
 }
