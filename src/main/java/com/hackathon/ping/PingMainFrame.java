@@ -45,10 +45,12 @@ public class PingMainFrame extends JFrame {
 		base = new JPanel();
 		menu = new JPanel();
 		base.setBackground(Color.WHITE);
+		Dimension d = new Dimension(w, h);
 
 		setUndecorated(true);
 		setResizable(false);
-		setSize(w, h);
+		setMinimumSize(d); // done to give us a window at the desired size, Bad hack
+		setSize(d);
 		setLocation(x, y);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
