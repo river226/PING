@@ -108,7 +108,8 @@ public class PingMainFrame extends JFrame {
 
 	private Container buildWinOpPanel() { 
 		JPanel winOpArea = new JPanel();
-		winOpArea.setSize(30, 10);
+		Dimension d = new Dimension(120, 40);
+		winOpArea.setPreferredSize(d);
 		BoxLayout layout = new BoxLayout(winOpArea, BoxLayout.X_AXIS);
 		winOpArea.setLayout(layout);
 		Rectangle rect = new Rectangle();
