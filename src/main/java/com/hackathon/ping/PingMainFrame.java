@@ -44,11 +44,11 @@ public class PingMainFrame extends JFrame {
 	private void initComponents() throws RuntimeException {
 		base = new JPanel();
 		menu = new JPanel();
-		base.setBackground(Color.WHITE);
+		base.setBackground(DEFAULT_COLOR);
 		
 		Dimension d = new Dimension(w, h); // Window Size
 		
-		this.setBackground(Color.WHITE);
+		this.setBackground(DEFAULT_COLOR);
 		this.setUndecorated(true);
 		this.setResizable(false);
 		this.setMinimumSize(d); // done to give us a window at the desired size, Bad hack
@@ -103,11 +103,19 @@ public class PingMainFrame extends JFrame {
 		return top; // build entire window top panel. 
 	}
 
+	/**
+	 * 	This constructs the upper left hand corner of the application. 
+	 * @return The constructed upper left corner of the window
+	 */
 	private Component buildWinMenu() { // No layout needed
-		JMenu men = new JMenu(); // TODO
-		return men;
+		JLabel logo = new JLabel (new ImageIcon("src/main/resources/logo/basic_title.png"));
+		return logo;
 	}
 
+	/**
+	 * This is the main Window Option area. 
+	 * @return the container for the window option buttons
+	 */
 	private Container buildWinOpPanel() { 
 		JPanel winOpArea = new JPanel();
 		Dimension d = new Dimension(120, 40); // Button Area size
