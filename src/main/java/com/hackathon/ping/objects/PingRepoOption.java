@@ -1,5 +1,7 @@
 package com.hackathon.ping.objects;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -16,10 +18,16 @@ public class PingRepoOption extends PingButton {
 	/**
 	 * @return the current on state
 	 */
-	public boolean setOn(){	
+	public boolean setOn(){
+		this.setBG();
 		return on = on ? false : true;
 	}
 	
+	private void setBG() {
+		if(on) this.setBackground(Color.white);
+		else this.setBackground(Color.lightGray);
+	}
+
 	public boolean isOn() {
 		return on;
 	}
@@ -27,9 +35,6 @@ public class PingRepoOption extends PingButton {
 	@Override
 	protected void doMousePressed() {
 		// TODO Auto-generated method stub
-		if(this.isOn()) {
-			
-		} // else do nothing
+		this.setOn();
 	}
-
 }
