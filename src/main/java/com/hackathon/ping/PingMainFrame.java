@@ -63,7 +63,7 @@ public class PingMainFrame extends JFrame {
 
 		contentPane.setLayout(winLayout);
 		contentPane.add(buildWindowFrame(), BorderLayout.PAGE_START);
-		contentPane.add(new PingRepoPanel(), BorderLayout.PAGE_END); // group layout
+		contentPane.add(new PingRepoPanel(), BorderLayout.CENTER); // group layout
 
 		addWindowDrag();
 	}
