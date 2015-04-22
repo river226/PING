@@ -76,7 +76,13 @@ public class PingMainFrame extends JFrame {
 			}
 
 			public void mouseReleased(MouseEvent e) {
-				mousePoint = null;
+				try{
+					mousePoint = null;
+					Point newlocation = e.getLocationOnScreen();
+					miniLoc.move(newlocation.x - mousePoint.x, newlocation.y - mousePoint.y);
+				} catch (Exception x) {
+
+				}
 			}
 
 		});
@@ -84,15 +90,24 @@ public class PingMainFrame extends JFrame {
 			/*
 			 * Do nothing.
 			 */
-			public void mouseMoved(MouseEvent e) {}
+			public void mouseMoved(MouseEvent e) {
+				try{}
+				catch (Exception x) {
+					System.out.println(x.getMessage());
+				}
+			}
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				if(!max) {
-				Point newlocation = e.getLocationOnScreen();
-				miniLoc.move(newlocation.x - mousePoint.x, newlocation.y - mousePoint.y);
-				setLocation(miniLoc);
-				}
+				try {
+
+					if(!max) { // Keeps window from moving when 
+						Point newlocation = e.getLocationOnScreen();
+						setLocation(newlocation.x - mousePoint.x, newlocation.y - mousePoint.y);
+					}
+				} catch (Exception x) {
+					System.out.println(x.getMessage());
+				} 
 			}
 		});
 	}
@@ -147,14 +162,21 @@ public class PingMainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(max) {
-					setLocation(miniLoc);
-					setSize(miniSize);
-					max = false;
+					try {
+						setLocation(miniLoc);
+						setSize(miniSize);
+						max = false;
+					} catch (Exception x) {
+						System.out.println(x.getMessage());
+					}
 				} else {
-					miniLoc = getLocation();
+					//miniLoc = getLocation();
 					miniSize = getSize(); 
-					setLocation(0,0);
-					setSize(dim.width, dim.height);
+					Point maxLoc = new Point (0,0);
+					Dimension maxSize = new Dimension(dim.width, dim.height);
+					setSize(maxSize);
+					setLocation(maxLoc);
+					System.out.println(getLocation());
 					max = true;
 				}
 			}
