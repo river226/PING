@@ -34,6 +34,8 @@ public class PingMainFrame extends JFrame {
 	static Point mousePoint;
 	private final Color DEFAULT_COLOR = Color.WHITE;
 	private final Color HOVER_COLOR   = Color.LIGHT_GRAY;
+	private final Point maxLoc = new Point (0,0);
+	private final Dimension maxSize = new Dimension(dim.width, dim.height);
 	private Point miniLoc;
 	private Dimension miniSize;
 
@@ -104,6 +106,8 @@ public class PingMainFrame extends JFrame {
 					if(!max) { // Keeps window from moving when 
 						Point newlocation = e.getLocationOnScreen();
 						setLocation(newlocation.x - mousePoint.x, newlocation.y - mousePoint.y);
+					} else {
+						return;
 					}
 				} catch (Exception x) {
 					System.out.println(x.getMessage());
@@ -170,13 +174,11 @@ public class PingMainFrame extends JFrame {
 						System.out.println(x.getMessage());
 					}
 				} else {
-					//miniLoc = getLocation();
-					miniSize = getSize(); 
-					Point maxLoc = new Point (0,0);
-					Dimension maxSize = new Dimension(dim.width, dim.height);
-					setSize(maxSize);
+					miniLoc = getLocation();
+					miniSize = getSize();
+					setSize(maxSize); 
+					// TODO Solve maximize issue
 					setLocation(maxLoc);
-					System.out.println(getLocation());
 					max = true;
 				}
 			}
