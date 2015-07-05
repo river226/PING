@@ -165,21 +165,20 @@ public class PingMainFrame extends JFrame {
 		maximizeButton = new PingWinButton(icons[2], icons[3], "Maximize", new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(max) {
+				if(max) { // Restore Windows small size
 					try {
-						setLocation(miniLoc);
-						setSize(miniSize);
+						setBounds(miniLoc.x, miniLoc.y, miniSize.width, miniSize.height);
 						max = false;
+						repaint();
 					} catch (Exception x) {
 						System.out.println(x.getMessage());
 					}
-				} else {
+				} else { // Maximize
 					miniLoc = getLocation();
 					miniSize = getSize();
-					setSize(maxSize); 
-					// TODO Solve maximize issue
-					setLocation(maxLoc);
+					setBounds(maxLoc.x, maxLoc.y, maxSize.width, maxSize.height);
 					max = true;
+					repaint();
 				}
 			}
 		}, rect);
