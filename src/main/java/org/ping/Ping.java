@@ -30,6 +30,9 @@ public class Ping {
 	} 
 
 
+	/**
+	 * @throws RuntimeException
+	 */
 	public static void createAndShowGUI() throws RuntimeException {
 		PingMainFrame mainFrame;
 		mainFrame = new PingMainFrame();
