@@ -1,4 +1,4 @@
-package org.ping;
+package org.ping.panels;
 
 public class PingRepoList {
 

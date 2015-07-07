@@ -1,24 +1,33 @@
-package org.ping;
+package org.ping.panels;
 
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 
 import org.ping.git.GitInstance;
 import org.ping.objects.AccountButton;
 
-public class PingAccountList {
+@SuppressWarnings("unused")
+public class PingAccountList extends Container{
+	
+	/**
+	 * Keep Eclipse Happy 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private GitInstance login;
 	private PingSignInPanel signin;
 	private ArrayList<AccountButton> accounts;
-	private BoxLayout layout;
+	private GridLayout parent_layout;
+	private BoxLayout account_layout;
 	private JFrame list;
 	
-	public PingAccountList(){
-		signin = new PingSignInPanel();
-		accounts = generateButtons();
-		layout = new BoxLayout(list, BoxLayout.Y_AXIS);
+
+	public PingAccountList(GroupLayout layout2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	private ArrayList<AccountButton> generateButtons() {

@@ -11,6 +11,7 @@ import javax.swing.*;
 import org.ping.git.GitInstance;
 import org.ping.objects.PingButton;
 import org.ping.objects.PingWinButton;
+import org.ping.panels.*;
 
 import java.awt.*;
 import java.awt.event.*;

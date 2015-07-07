@@ -1,4 +1,4 @@
-package org.ping;
+package org.ping.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,7 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+@SuppressWarnings("unused")
 public class PingSignInPanel extends JPanel {
+	
+	/**
+	 * Keep Eclipse Happy
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private BorderLayout login;
 	private BoxLayout input;

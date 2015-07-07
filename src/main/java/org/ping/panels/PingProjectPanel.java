@@ -1,4 +1,4 @@
-package org.ping;
+package org.ping.panels;
 
 import javax.swing.JPanel;
 
