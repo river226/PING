@@ -1,11 +1,14 @@
 package org.ping.panels;
 
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 import org.ping.git.GitInstance;
 import org.ping.objects.AccountButton;
@@ -19,42 +22,18 @@ public class PingAccountList extends Container{
 	private static final long serialVersionUID = 1L;
 	
 	private GitInstance login;
+	private JTabbedPane accounts;
 	private PingSignInPanel signin;
-	private ArrayList<AccountButton> accounts;
-	private GridLayout parent_layout;
-	private BoxLayout account_layout;
-	private JFrame list;
-	
+	private ArrayList<PingRepoList> repos;
 
-	public PingAccountList(GroupLayout layout2) {
-		// TODO Auto-generated constructor stub
+	public PingAccountList(FlowLayout f) {
+		f.addLayoutComponent("Accounts", buildAccountList());
 	}
 
-	private ArrayList<AccountButton> generateButtons() {
-		ArrayList<AccountButton> BList = new ArrayList<AccountButton>();
-		
-		while(true) {
-			BList.add(createButton());
-			break; // Keep Eclipse Happy
-		} 
-		
-		BList.add(newAccount());
-		
-		return BList;
+	private Component buildAccountList() {
+		// TODO Auto-generated method stub
+		accounts = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
+		accounts.add("New Account", signin);
+		return accounts;
 	}
-	
-	private AccountButton createButton() {
-		// TODO
-		return null;
-	}
-
-	private AccountButton newAccount() {
-		
-		return null;
-	}
-	
-	public JFrame GnerateList(){
-		return list;
-	}
-	
 }

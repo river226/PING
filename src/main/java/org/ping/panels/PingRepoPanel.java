@@ -3,6 +3,7 @@ package org.ping.panels;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
@@ -25,7 +26,7 @@ public class PingRepoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	// Define Globals
-	private GroupLayout layout = new GroupLayout(this);
+	private FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
 	private PingAccountList accounts;
 
 	// Constructor
@@ -41,21 +42,9 @@ public class PingRepoPanel extends JPanel {
 
 		this.setMinimumSize(new Dimension(500, 500));
 		this.setBackground(Color.white);
-
-		layout.setAutoCreateGaps(true);
-		layout.setAutoCreateContainerGaps(true);
 		
 		accounts = new PingAccountList(layout);
 
-		layout.setHorizontalGroup( // Layout Sequentially
-				layout.createSequentialGroup()
-				.addComponent(accounts)
-				);
-		layout.setVerticalGroup( // Set up parallel group for vertical
-				layout.createSequentialGroup()
-				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(accounts)
-						)
-				);
+		//layout.addLayoutComponent("Accounts", accounts);
 	}
 }
