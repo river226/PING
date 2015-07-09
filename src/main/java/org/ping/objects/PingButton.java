@@ -8,8 +8,38 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public abstract class PingButton extends JButton {
+	/**
+	 * Keep Eclipse Happy
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected final Color defaultColor = new Color(238,238,238);
 	protected final Color hoverColor = Color.LIGHT_GRAY;
+	
+	public PingButton(String text) {
+		super(text);
+		
+		setBackground(defaultColor);
+		addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent a) {
+				doMouseEnt();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent a) {
+				doMouseEx();
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent a) {
+				doMousePressed();
+			}
+			
+		});
+		this.setBorderPainted(false);
+	}
 	
 	public PingButton(String text, ImageIcon imageIcon) {
 		super(text, imageIcon);

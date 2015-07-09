@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 import org.ping.git.GitInstance;
@@ -27,13 +28,16 @@ public class PingAccountList extends Container{
 	private ArrayList<PingRepoList> repos;
 
 	public PingAccountList(FlowLayout f) {
-		f.addLayoutComponent("Accounts", buildAccountList());
+		this.setLayout(f);
+		signin = new PingSignInPanel();
+		buildAccountList();
 	}
 
-	private Component buildAccountList() {
+	private void buildAccountList() {
 		// TODO Auto-generated method stub
 		accounts = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
 		accounts.add("New Account", signin);
-		return accounts;
+		//accounts.add(new JLabel("Test"));
+		this.add(accounts);
 	}
 }

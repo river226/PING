@@ -57,10 +57,17 @@ public class GitInstance {
 		client = new GitHubClient();
 		String pwd = new String(cs);
 		client.setCredentials(userName, pwd);
-		pwd = null; //Keep in for security reasons. We need to destory the string after creation.
 		service = new RepositoryService(client);
 		config =  new UserService(client);
 		avatar = null;
+		
+		// Clean out the password securely
+		for(int i = 0; i < cs.length; i++) {
+			pwd.replace(cs[i], '0');
+			cs[i] = 0;
+		}
+		cs = null;
+		pwd = null;
 	}
 	
 	/**

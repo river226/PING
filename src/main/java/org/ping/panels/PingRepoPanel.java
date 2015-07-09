@@ -40,11 +40,10 @@ public class PingRepoPanel extends JPanel {
 	 */
 	private void buildPanel() {
 
-		this.setMinimumSize(new Dimension(500, 500));
+		//this.setMinimumSize(new Dimension(500, 500));
 		this.setBackground(Color.white);
 		
 		accounts = new PingAccountList(layout);
-
-		//layout.addLayoutComponent("Accounts", accounts);
+		this.add(accounts);
 	}
 }
