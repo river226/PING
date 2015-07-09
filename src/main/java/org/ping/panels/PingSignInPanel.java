@@ -53,6 +53,7 @@ public class PingSignInPanel extends JPanel {
 			GitInstance g = GitInstance.getInstance();	
 			g.login(u, p);
 			git.add(g);
+			// Implement Watcher to add Account to List, and build Repo
 		} catch (Exception e) {
 			errorInvalid();
 		}
@@ -61,11 +62,6 @@ public class PingSignInPanel extends JPanel {
 		for(int i = 0; i < p.length; i++) 
 			p[i] = 0;
 		p = null;
-	}
-
-	private void buildRepoList(GitInstance g) {
-		// TODO Auto-generated method stub
-
 	}
 
 	private class SignInButton extends PingButton {
